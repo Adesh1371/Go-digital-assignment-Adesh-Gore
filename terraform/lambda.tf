@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "s3_to_rds" {
   function_name     = "s3-to-rds"
-  role              = "arn:aws:iam::977098984022:role/myroles"
-  image_uri         = "977098984022.dkr.ecr.ap-south-1.amazonaws.com/s3-rds-data-bucket:latest"
+  role              = "{ROLE}"
+  image_uri         = "{IMAGE_URI}"
   package_type      = "Image"
 
   environment {
