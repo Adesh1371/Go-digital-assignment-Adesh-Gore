@@ -14,8 +14,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t s3-to-rds-or-glue .'
-                sh 'docker tag s3-to-rds-or-glue:latest <account_id>.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
-                sh 'docker push <account_id>.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
+                sh 'docker tag s3-to-rds-or-glue:latest 12345698.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
+                sh 'docker push 12345698.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
             }
         }
     }
