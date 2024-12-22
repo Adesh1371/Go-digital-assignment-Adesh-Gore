@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/Adesh1371/Go-digital-assignment-Adesh-Gore.git'
+            }
+        }
+        stage('Terraform Init and Apply') {
+            steps {
+                sh 'cd terraform && terraform init && terraform apply -auto-approve'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t s3-to-rds-or-glue .'
+                sh 'docker tag s3-to-rds-or-glue:latest <account_id>.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
+                sh 'docker push <account_id>.dkr.ecr.us-east-1.amazonaws.com/s3-to-rds-or-glue:latest'
+            }
+        }
+    }
+}
